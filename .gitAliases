@@ -90,6 +90,7 @@ alias gclean='git clean -fd'
 alias gm="git merge"
 alias gcp='git cherry-pick'
 alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
+alias gmom='git merge origin/master'
 
 #others
 alias gexport='git archive --format zip --output'

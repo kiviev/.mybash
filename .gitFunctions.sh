@@ -376,7 +376,10 @@ function git_rename() {
   FOLDER=''
   BASE=$DEV_BRANCH
   THIS_PREFIX=$PREFIX
-  if [ "$2" == -h ]; then
+  if [ "$2" == '-f' ]; then
+    FOLDER='feature'
+    BASE=$DEV_BRANCH
+  elif [ "$2" == '-h' ]; then
     FOLDER='hotfix'
     BASE=$PROD_BRANCH
   elif [ "$2" == '-r' ]; then
@@ -387,8 +390,13 @@ function git_rename() {
   elif [ "$2" == '-p' ]; then
     gogo master
     go -b $1
-    exit
+    return 
   fi
   gogo $BASE
+  echo "git flow $FOLDER start $THIS_PREFIX$1"
   git flow $FOLDER start $THIS_PREFIX$1
+  # if [ "$2" == '-f']; then
+  #   echo "vamos a gof $1"
+  #   gof $1
+  # fi
  }
