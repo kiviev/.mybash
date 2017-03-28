@@ -66,6 +66,16 @@ alias gsl="git shortlog -sn"
 alias gw="git whatchanged"
 alias gcount='git shortlog -sn'
 
+# stash
+alias gst="git stash"
+alias gstsv="git stash save"
+alias gsta="git stash apply"
+alias gstl="git stash list"
+alias gstp="git stash pop"
+alias gstd="git stash drop"
+alias gstclear="git stash clear"
+alias gstsh="git stash show"
+
 # branching
 # branches
 alias gb='git branch'
