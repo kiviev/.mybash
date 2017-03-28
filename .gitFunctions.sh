@@ -400,3 +400,63 @@ function git_rename() {
   #   gof $1
   # fi
  }
+
+ function git_stash(){
+  # about 'Stash the changes in a dirty working directory away'
+  # group 'git'
+  # param '1: Option'
+  #           -s = save
+  #           -d = drop
+  #           -a = apply
+  #           -p = pop
+  #           -l = list
+  #           -sw = show
+  #           -clear = clear all list of stashes'
+  # param '2: Title or index of stash:
+  TYPE=''
+  ARG=''
+  if [ "$2" != '' ]; then
+    ARG=$2
+  fi
+  if [ "$1" == '-s' ]; then 
+    TYPE="save"
+    if [ "$2" != '' ]; then
+      ARG=$2
+    else 
+      echo "No ha puesto titulo al stash"
+      return
+    fi
+  elif [ "$1" == '-d' ]; then
+      TYPE="drop"
+      if [ "$2" != '' ]; then
+      ARG=$2
+    else 
+      echo "No ha seleccionado index del stash"
+      return
+      fi
+  elif [ "$1" == '-a' ]; then
+      TYPE="apply"
+      if [ "$2" != '' ]; then
+      ARG=$2
+    else 
+      echo "No ha seleccionado index del stash"
+      return
+    fi
+  elif [ "$1" == '-p' ]; then
+      TYPE="pop"
+    if [ "$2" != '' ]; then
+      ARG=$2
+    else 
+      echo "No ha seleccionado index del stash"
+      return
+    fi
+  elif [ "$1" == '-l' ]; then
+      TYPE="list"
+  elif [ "$1" == '-sw' ]; then
+      TYPE="show"
+  elif [ "$1" == '-clear' ]; then
+      TYPE="clear"
+  fi
+  echo "git stash $TYPE $ARG"
+  git stash $TYPE $ARG
+ }
