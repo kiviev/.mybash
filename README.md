@@ -4,7 +4,7 @@ A repor for my conf archieves
 # How to use
 In your .bashrc, add
 ```bash
-CONF_DIR="C:\Users\paco_alba\.gitbash"
+CONF_DIR=~/.gitbash
 SSH_ENV=$HOME/.ssh/environment
 
 # Aliases
@@ -15,8 +15,10 @@ source $CONF_DIR/.gitFunctions.sh
 
 # Alias propios
 source $CONF_DIR/.myaliases
-# Mis funciones de git
+# Mis funciones 
 source $CONF_DIR/.myFunctions.sh
+
+
 
 
 # start the ssh-agent
