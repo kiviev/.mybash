@@ -12,6 +12,7 @@ alias htdocs="cd /opt/lampp/htdocs"
 	#### alias
 
 alias actualizar='sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y'
+alias instalar='sudo apt-get install'
 
 alias proj="cd $projects"
 alias cursos="cd $cursos"
