@@ -1,0 +1,4 @@
+
+source $CONF_DIR/myAliases/blink
+source $CONF_DIR/myAliases/linux
+

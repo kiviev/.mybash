@@ -9,6 +9,13 @@ DEV_BRANCH='master'
 
 ## Git complex functions
 
+# change the constants for project
+function constants {
+  if [ -f ./.gitconfigbash ]; then
+    source ./.gitconfigbash
+  fi
+}
+
 function git_remote {
   # about 'adds remote $GIT_HOSTING:$1 to current repo'
   # group 'git'
@@ -373,6 +380,7 @@ function git_rename() {
   #           -r = release
   #           -b = bugfix
   #           -p = personalized (no add $PREFIX)'
+  constants
   FOLDER=''
   BASE=$DEV_BRANCH
   THIS_PREFIX=$PREFIX

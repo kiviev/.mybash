@@ -2,10 +2,8 @@
 alias bl='cd D:/workspaces/web/blinkweb'
 alias bl4='cd D:/workspaces/web/blink4edu'
 alias bltest='cd D:/workspaces/blinktest'
-alias mybash='cd ~/.gitbash/'
+alias mybash='cd ~/.mybash/'
 
 alias blssh='root@192.168.56.2'
-
-
 
 
