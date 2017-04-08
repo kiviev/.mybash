@@ -468,3 +468,38 @@ function git_rename() {
   echo "git stash $TYPE $ARG"
   git stash $TYPE $ARG
  }
+
+
+function git_del_origin(){
+  # about 'delete a branch in origin repo'
+  # group 'git'
+  # param '1: Ticket number, without $PREFIX'
+  # param '2: Branch type:
+  #           -f = feature (default)
+  #           -h = hotfix
+  #           -r = release
+  #           -b = bugfix
+  #           -p = personalized (no add $PREFIX)'
+  constants
+  FOLDER=''
+  BASE=$DEV_BRANCH
+  THIS_PREFIX=$PREFIX
+  if [ "$2" == '-f' ]; then
+    FOLDER='feature'
+    BASE=$DEV_BRANCH
+  elif [ "$2" == '-h' ]; then
+    FOLDER='hotfix'
+    BASE=$PROD_BRANCH
+  elif [ "$2" == '-r' ]; then
+    FOLDER='release'
+    THIS_PREFIX='v.'
+  elif [ "$2" == '-b' ]; then
+    FOLDER='bugfix'
+ elif [ "$2" == '-p' ]; then
+    echo "git push origin :$1"
+    git push origin :$1
+    return
+  fi
+echo "git push origin :$FOLDER/$THIS_PREFIX$1"
+   git push origin :$FOLDER/$THIS_PREFIX$1
+}
