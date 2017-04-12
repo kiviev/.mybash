@@ -34,3 +34,18 @@ function blgit_pub(){
 	bl && git_pub 
 }
 
+
+function  blgo_pull(){
+	bl4 && go $1 && gl
+	bl && go $1 && gl	
+}
+
+function blgit_del_local(){
+	bl4 && git_del_local $1 $2
+	bl && git_del_local $1 $2
+}
+
+function blgit_merge(){
+	bl4 && git_merge $1 $2 $3 $4
+	bl && git_merge $1 $2 $3 $4
+}

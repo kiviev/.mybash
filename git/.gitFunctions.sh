@@ -503,3 +503,34 @@ function git_del_origin(){
 echo "git push origin :$FOLDER/$THIS_PREFIX$1"
    git push origin :$FOLDER/$THIS_PREFIX$1
 }
+
+function git_del_local(){
+  constants
+  FOLDER=''
+  BASE=$DEV_BRANCH
+  THIS_PREFIX=$PREFIX
+  if [ "$2" == '-f' ]; then
+    FOLDER='feature'
+    BASE=$DEV_BRANCH
+  elif [ "$2" == '-h' ]; then
+    FOLDER='hotfix'
+    BASE=$PROD_BRANCH
+  elif [ "$2" == '-r' ]; then
+    FOLDER='release'
+    THIS_PREFIX='v.'
+  elif [ "$2" == '-b' ]; then
+    FOLDER='bugfix'
+  elif [ "$2" == '-p' ]; then
+    echo "git branch -D $1"
+    git push origin :$1
+    return
+  fi
+  echo "git branch -D $FOLDER/$THIS_PREFIX$1"
+  git branch -D $FOLDER/$THIS_PREFIX$1
+}
+
+function git_merge(){
+
+
+  echo "git merge origin/master"
+}
