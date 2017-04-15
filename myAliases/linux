@@ -22,11 +22,13 @@ alias angular="cd $angular"
 alias restaurantes="cd $restaurantes"
 alias we="cd $projects/trabajos/weconoceteatimismo.com"
 alias laravel="cd $projects/laravel"
-alias homestead="cd ~/Homestead/"
-alias homesteadup="cd ~/Homestead/ && vagrant up"
-alias homesteadhalt="cd ~/Homestead/ && vagrant halt"
-alias homesteadssh="cd ~/Homestead/ && vagrant ssh"
-alias homesteadprov="cd ~/Homestead/ && vagrant provision"
+
+### Homestead
+alias hmst="cd ~/Homestead/"
+alias hmstup="cd ~/Homestead/ && vagrant up"
+alias hmsthalt="cd ~/Homestead/ && vagrant halt"
+alias hmstssh="cd ~/Homestead/ && vagrant ssh"
+alias hmstprov="cd ~/Homestead/ && vagrant provision"
 
 ### alias ejecucion programas
 			
