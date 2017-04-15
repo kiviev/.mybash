@@ -7,10 +7,10 @@ alias apa="cd /etc/apache2/"
 alias apaen="cd /etc/apache2/sites-enabled/"
 alias apaav="cd /etc/apache2/sites-available/"
 
-alias apasta="sudo apache2 start"
-alias apasto="sudo apache2 stop"
-alias apasrsta="sudo apache2 restart"
-alias apastatus="sudo apache2 status"
+alias apasta="sudo service apache2 start"
+alias apasto="sudo service apache2 stop"
+alias apasrsta="sudo service apache2 restart"
+alias apastatus="sudo service apache2 status"
 
 #### edit files
 
