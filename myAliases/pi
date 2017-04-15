@@ -1,0 +1,13 @@
+
+#### alias
+
+        ##### apache
+alias www="cd /var/www/html/"
+alias apa="cd /etc/apache2/"
+alias apaen="cd /etc/apache2/sites-enabled/"
+alias apaav="cd /etc/apache2/sites-available/"
+
+
+#### edit files
+
+alias apacheconf="sudo nano /etc/apache2/apache2.conf"

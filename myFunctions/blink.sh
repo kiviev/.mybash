@@ -1,4 +1,6 @@
 
+# funciones que hay que hacer por duplicado en blink
+
 function blgo(){
 	bl4 && go $1
 	bl && go $1
@@ -23,7 +25,6 @@ function blgit_pub(){
 	bl4 && git_pub 
 	bl && git_pub 
 }
-
 
 function  blgo_pull(){
 	bl4 && go $1 && gl

@@ -3,3 +3,5 @@ source $CONF_DIR/myAliases/windows
 source $CONF_DIR/myAliases/blink
 source $CONF_DIR/myAliases/linux
 
+source $CONF_DIR/myAliases/pi
+
