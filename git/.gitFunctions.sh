@@ -530,7 +530,18 @@ function git_del_local(){
 }
 
 function git_merge(){
-
-
-  echo "git merge origin/master"
+  ORIGIN=''
+  DESTINY=''
+  PUB=''
+  if [ "$1" == '-om' ]; then
+    ORIGIN='origin'
+    DESTINY='master'
+  else
+    echo 'sin argumentos'
+  fi
+  if [ "$2" == '-pub' ]; then
+    PUB='&& git_pub'
+  fi
+  echo "git merge $ORIGIN/$DESTINY $PUB"
+  git merge $ORIGIN/$DESTINY
 }
