@@ -1,4 +1,5 @@
 ## Git flow variables
+ORIGIN='origin/'
 FEATURE='feature/'
 BUGFIX='bugfix/'
 HOTFIX='hotfix/'
@@ -530,18 +531,29 @@ function git_del_local(){
 }
 
 function git_merge(){
-  ORIGIN=''
-  DESTINY=''
+  THIS_ORIGIN=$ORIGIN
+  FOLDER=''
+  THIS_PREFIX=$PREFIX
   PUB=''
+  BRANCH=''
   if [ "$1" == '-om' ]; then
-    ORIGIN='origin'
-    DESTINY='master'
+    FOLDER='master'
+  elif [ "$1" == '-of' ]; then
+    FOLDER="$FEATURE"
+    BRANCH="$THIS_PREFIX$2"
+  elif [ "$1" == '-f' ]; then
+    THIS_ORIGIN=''
+    FOLDER="$FEATURE"
+    BRANCH="$THIS_PREFIX$2"
   else
     echo 'sin argumentos'
   fi
-  if [ "$2" == '-pub' ]; then
-    PUB='&& git_pub'
+  if  [ "$2" == '-pub' ] || [ "$3" == '-pub' ] ; then
+    PUB="git_pub"
   fi
-  echo "git merge $ORIGIN/$DESTINY $PUB"
-  git merge $ORIGIN/$DESTINY
+  echo "git merge $THIS_ORIGIN$FOLDER$BRANCH"
+  git merge $THIS_ORIGIN$FOLDER$BRANCH
+  if [ "$PUB" != '' ]; then
+    $PUB
+  fi
 }

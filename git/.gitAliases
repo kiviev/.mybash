@@ -42,6 +42,7 @@ alias gpom='git push origin master'
 ## Git commit
 alias gc='git commit -v'
 alias gca='git commit -v -a'
+alias gcapub='gca && git_pub'
 alias gcm='git commit -v -m'
 alias gci='git commit --interactive'
 ## Staging archives
