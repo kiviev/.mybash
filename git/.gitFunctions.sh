@@ -17,6 +17,13 @@ function constants {
   fi
 }
 
+function get_repo(){
+  basename -s .git `git config --get remote.origin.url`
+}
+
+function print_repo(){
+   echo -e ${YELLOW}$(get_repo)${NC}
+}
 function git_remote {
   # about 'adds remote $GIT_HOSTING:$1 to current repo'
   # group 'git'
