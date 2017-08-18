@@ -36,7 +36,23 @@ function blgit_del_local(){
 	bl && git_del_local $1 $2
 }
 
+function blgit_del_origin(){
+	bl4 && git_del_origin $1 $2
+	bl && git_del_origin $1 $2
+}
+
+function blgit_del_all(){
+	bl4 && git_del_all $1 $2
+	bl && git_del_all $1 $2
+}
+
 function blgit_merge(){
 	bl4 && git_merge $1 $2 $3 $4
 	bl && git_merge $1 $2 $3 $4
+}
+
+
+function blgit_del_local_lotes(){
+	bl4 && git_del_local_lotes $1 $2
+	bl && git_del_local_lotes $1 $2
 }

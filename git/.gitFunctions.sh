@@ -492,24 +492,28 @@ function git_del_origin(){
   FOLDER=''
   BASE=$DEV_BRANCH
   THIS_PREFIX=$PREFIX
-  if [ "$2" == '-f' ]; then
-    FOLDER='feature'
-    BASE=$DEV_BRANCH
-  elif [ "$2" == '-h' ]; then
-    FOLDER='hotfix'
-    BASE=$PROD_BRANCH
-  elif [ "$2" == '-r' ]; then
-    FOLDER='release'
-    THIS_PREFIX='v.'
-  elif [ "$2" == '-b' ]; then
-    FOLDER='bugfix'
- elif [ "$2" == '-p' ]; then
-    echo "git push origin :$1"
-    git push origin :$1
+  if [[ -z $1 || -z $2 ]]; then
+    echo "git delete origin sin argumentos"
     return
   fi
-echo "git push origin :$FOLDER/$THIS_PREFIX$1"
-   git push origin :$FOLDER/$THIS_PREFIX$1
+  if [ "$1" == '-f' ]; then
+    FOLDER='feature'
+    BASE=$DEV_BRANCH
+  elif [ "$1" == '-h' ]; then
+    FOLDER='hotfix'
+    BASE=$PROD_BRANCH
+  elif [ "$1" == '-r' ]; then
+    FOLDER='release'
+    THIS_PREFIX='v.'
+  elif [ "$1" == '-b' ]; then
+    FOLDER='bugfix'
+ elif [ "$1" == '-p' ]; then
+    echo "git push origin :$2"
+    git push origin :$2
+    return
+  fi
+echo "git push origin :$FOLDER/$THIS_PREFIX$2"
+   git push origin :$FOLDER/$THIS_PREFIX$2
 }
 
 function git_del_local(){
@@ -517,24 +521,33 @@ function git_del_local(){
   FOLDER=''
   BASE=$DEV_BRANCH
   THIS_PREFIX=$PREFIX
-  if [ "$2" == '-f' ]; then
-    FOLDER='feature'
-    BASE=$DEV_BRANCH
-  elif [ "$2" == '-h' ]; then
-    FOLDER='hotfix'
-    BASE=$PROD_BRANCH
-  elif [ "$2" == '-r' ]; then
-    FOLDER='release'
-    THIS_PREFIX='v.'
-  elif [ "$2" == '-b' ]; then
-    FOLDER='bugfix'
-  elif [ "$2" == '-p' ]; then
-    echo "git branch -D $1"
-    git push origin :$1
+  if [[ -z $1 || -z $2 ]]; then
+    echo "git delete local sin argumentos"
     return
   fi
-  echo "git branch -D $FOLDER/$THIS_PREFIX$1"
-  git branch -D $FOLDER/$THIS_PREFIX$1
+  if [ "$1" == '-f' ]; then
+    FOLDER='feature'
+    BASE=$DEV_BRANCH
+  elif [ "$1" == '-h' ]; then
+    FOLDER='hotfix'
+    BASE=$PROD_BRANCH
+  elif [ "$1" == '-r' ]; then
+    FOLDER='release'
+    THIS_PREFIX='v.'
+  elif [ "$1" == '-b' ]; then
+    FOLDER='bugfix'
+  elif [ "$1" == '-p' ]; then
+    echo "git branch -D $2"
+    git push origin :$2
+    return
+  fi
+  echo "git branch -D $FOLDER/$THIS_PREFIX$2"
+  git branch -D $FOLDER/$THIS_PREFIX$2
+}
+
+function git_del_all(){
+  git_del_local $1 $2
+  git_del_origin $1 $2
 }
 
 function git_merge(){
@@ -563,4 +576,35 @@ function git_merge(){
   if [ "$PUB" != '' ]; then
     $PUB
   fi
+}
+
+
+function git_del_local_lotes(){
+  echo "git del local LOTES"
+  FOLDER=''
+  if [[ -z $1 || -z $2 ]]; then
+    echo "Sin argumentos"
+    return
+  fi
+  declare -a ARRAY=("${!2}")
+  # Get number of elements in the array
+  ELEMENTS=${#ARRAY[@]}
+    echo "elementos: "$ELEMENTS
+  # Echo each element in array
+  if [[ "$1" == '-f' || "$1" == '-h' || "$1" == '-r' || "$1" == '-b' || "$1" == '-p' ]]; then
+      FOLDER=$1
+  else 
+    echo "Parametro $1 no valido"
+    return
+  fi
+  if [ "$ELEMENTS" -gt "0" ]; then
+    for ((i=0; i<$ELEMENTS; i++)); do
+      if [ $FOLDER != '' ]; then
+        git_del_local $1 ${ARRAY[${i}]}
+      fi
+    done
+  else 
+    echo "$2 o no es un array o no tiene ningun elemento"
+  fi
+
 }
