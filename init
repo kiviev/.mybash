@@ -11,7 +11,7 @@ SSH_ENV=$HOME/.ssh/environment
 
 # Aliases
 source $CONF_DIR/git/.gitAliases
-source $CONF_DIR/git/.nodegitAliases
+source $CONF_DIR/git/nodegitAliases.sh
 # Git complex functions
 source $CONF_DIR/git/.gitFunctions.sh
 
