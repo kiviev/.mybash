@@ -1,8 +1,8 @@
 
-alias bl='cd D:/workspaces/web/blinkweb'
-alias bl4='cd D:/workspaces/web/blink4edu'
-alias bltest='cd D:/workspaces/blinktest'
-alias mybash='cd ~/.mybash/'
+alias bl='cd D:/workspaces/web/blinkweb && print_repo'
+alias bl4='cd D:/workspaces/web/blink4edu && print_repo'
+alias bltest='cd D:/workspaces/blinktest && print_repo'
+alias mybash='cd ~/.mybash/ && print_repo'
 
 alias blssh='root@192.168.56.2'
 
