@@ -384,18 +384,18 @@ function git_rename() {
   FOLDER=''
   BASE=$DEV_BRANCH
   THIS_PREFIX=$PREFIX
-  if [ "$2" == '-f' ]; then
+  if [ "$2" = '-f' ]; then
     FOLDER='feature'
     BASE=$DEV_BRANCH
-  elif [ "$2" == '-h' ]; then
+  elif [ "$2" = '-h' ]; then
     FOLDER='hotfix'
     BASE=$PROD_BRANCH
-  elif [ "$2" == '-r' ]; then
+  elif [ "$2" = '-r' ]; then
     FOLDER='release'
     THIS_PREFIX='v.'
-  elif [ "$2" == '-b' ]; then
+  elif [ "$2" = '-b' ]; then
     FOLDER='bugfix'
-  elif [ "$2" == '-p' ]; then
+  elif [ "$2" = '-p' ]; then
     gogo master
     go -b $1
     return 

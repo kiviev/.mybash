@@ -5,3 +5,5 @@ source $CONF_DIR/myAliases/linux
 
 source $CONF_DIR/myAliases/pi
 
+alias nodeparams="node ~/Escritorio/nodetest/params.js"
+alias and=&& 
