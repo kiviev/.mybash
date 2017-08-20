@@ -1,0 +1,3 @@
+PREFIX=''
+PROD_BRANCH='master'
+DEV_BRANCH='develop'
