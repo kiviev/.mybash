@@ -11,6 +11,7 @@ SSH_ENV=$HOME/.ssh/environment
 
 # Aliases
 source $CONF_DIR/git/.gitAliases
+source $CONF_DIR/git/nodegitAliases.sh
 # Git complex functions
 source $CONF_DIR/git/.gitFunctions.sh
 
@@ -19,6 +20,8 @@ source $CONF_DIR/git/.gitFunctions.sh
 source $CONF_DIR/myAliases/.myaliases
 # Mis funciones 
 source $CONF_DIR/myFunctions/.myFunctions.sh
+# Ionic 
+source $CONF_DIR/ionic/.ionic.sh
 
 
 
@@ -33,6 +36,7 @@ function start_agent {
     . "${SSH_ENV}" > /dev/null
     /usr/bin/ssh-add
     ssh-add ~/.ssh/id_rsa
+    ssh-add ~/.ssh/lenovo2
 }
  
 if [ -f "${SSH_ENV}" ]; then

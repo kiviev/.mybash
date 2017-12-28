@@ -3,6 +3,8 @@
 	#### directorios
 projects="$HOME/projects"
 cursos="$projects/cursos"
+apps="$projects/apps"
+ionicapps="$apps/ionic"
 angular="$cursos/angular2"
 restaurantes="$angular/appRestaurantes"
 	### apache
@@ -21,6 +23,8 @@ alias cursos="cd $cursos"
 alias angular="cd $angular"
 alias restaurantes="cd $restaurantes"
 alias we="cd $projects/trabajos/weconoceteatimismo.com"
+alias mantenimiento="cd $ionicapps/mantenimiento"
+alias mantserve="mantenimiento && is"
 alias laravel="cd $projects/laravel"
 
 ### Homestead
