@@ -27,6 +27,7 @@ alias gss='git status -s'
 ## reverting
 alias gus='git reset HEAD'
 alias gpristine='git reset --hard && git clean -dfx'
+alias gdall='git checkout -- .'
 ## view repos
 alias gr='git remote'
 alias grv='git remote -v'
