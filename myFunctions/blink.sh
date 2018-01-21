@@ -56,3 +56,8 @@ function blgit_del_local_lotes(){
 	bl4 && git_del_local_lotes $1 $2
 	bl && git_del_local_lotes $1 $2
 }
+
+function blgdall(){
+	bl4 && gdall
+	bl && gdall 
+}

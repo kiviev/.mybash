@@ -578,6 +578,10 @@ function git_merge(){
   fi
 }
 
+#la forma de usar es:
+# 1- se va al repo que se desee
+# 2- se declara el array de las ramas que se desean borrar ramasforedu=(10961 10979 11682 ...)
+# 3- se invoca la funcion pej git_del_local_lotes -f ${ramasweb[*]}
 
 function git_del_local_lotes(){
   echo "git del local LOTES"
@@ -586,10 +590,11 @@ function git_del_local_lotes(){
     echo "Sin argumentos"
     return
   fi
-  declare -a ARRAY=("${!2}")
+  declare -a ARRAY=("${@:2}")
   # Get number of elements in the array
   ELEMENTS=${#ARRAY[@]}
     echo "elementos: "$ELEMENTS
+    echo "array: "${ARRAY[@]}
   # Echo each element in array
   if [[ "$1" == '-f' || "$1" == '-h' || "$1" == '-r' || "$1" == '-b' || "$1" == '-p' ]]; then
       FOLDER=$1
