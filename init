@@ -36,7 +36,7 @@ function start_agent {
     . "${SSH_ENV}" > /dev/null
     /usr/bin/ssh-add
     ssh-add ~/.ssh/id_rsa
-    ssh-add ~/.ssh/lenovo2
+    ssh-add ~/.ssh/ubuntulenovo4
 }
  
 if [ -f "${SSH_ENV}" ]; then
