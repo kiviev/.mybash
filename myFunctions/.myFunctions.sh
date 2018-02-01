@@ -25,23 +25,34 @@ echo "ssh $USER@$IP"
 
 
 function printText(){
+	# $1 color
+	# $2 text to color
 	TEXT=''
 	COLOR=''
-	if [ "$1" != '' ]; then
-		TEXT=$1
-	fi
 	if [ "$2" != '' ]; then
-		COLOR=$2
-		echo "color: "$COLOR
+		TEXT=$2
+	fi
+	if [ "$1" != '' ]; then
+
+		if [ "$1" == 'ERROR' ]; then
+			COLOR='LIGHT_RED'
+		elif [ "$1" == 'WARN' ]; then
+			COLOR='YELLOW'
+		elif [ "$1" == 'OK' ]; then
+			COLOR='LIGHT_GREEN'
+		elif [ "$1" == 'COMMAND' ]; then
+			COLOR='ORANGE'
+		else
+			COLOR=$1
+		fi
 	else
 		echo "no color"
 		COLOR=$NC
 	fi
-	echo "color2: "$COLOR
-	echo -e ${$COLOR}$TEXT${NC}
+	echo -e ${!COLOR}$TEXT${NC}
 }
 
-
+# -e ${YELLOW}$(get_repo)${NC}
 
 # function is_array(){
 # 	ISARRAY=0

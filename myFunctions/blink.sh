@@ -61,3 +61,9 @@ function blgdall(){
 	bl4 && gdall
 	bl && gdall 
 }
+
+function blclean_wc(){
+	gdall &&  g clean -dfx -e blink/conf/ -e blink/www/wrk/ -e blink/www/node_modules/
+	# gpristine -e blink/conf/ -e blink/www/wrk/ -e blink/www/node_modules/
+
+}

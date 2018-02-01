@@ -22,7 +22,7 @@ function get_repo(){
 }
 
 function print_repo(){
-   echo -e ${YELLOW}$(get_repo)${NC}
+   printText "LIGHT_CYAN" $(get_repo)
 }
 function git_remote {
   # about 'adds remote $GIT_HOSTING:$1 to current repo'
@@ -612,4 +612,24 @@ function git_del_local_lotes(){
     echo "$2 o no es un array o no tiene ningun elemento"
   fi
 
+}
+
+
+
+function patchToStash(){
+  STASHNUM=''
+  FILEPATH=''
+  # $1 = num of stash in git stash list
+  # $2 = ruta y nombre ( sin extension ) donde se creara el fichero .patch
+  if [[ $1 != '' && $2 != '' ]]; then 
+    STASHNUM=$1
+    FILEPATH=$2
+  else
+    printText 'ERROR' 'ERROR: Sin argumentos'
+    return
+  fi
+
+  printText "LIGHT_PURPLE" "gstshw -p stash@{$STASHNUM} > $FILEPATH.patch"
+  gstshw -p stash@{$STASHNUM} > $FILEPATH.patch
+  printText "OK" "OK" 
 }

@@ -21,7 +21,7 @@ alias gpp='git pull && git push'
 
 # repository status
 ## git status
-alias gst='git status'
+# alias gst='git status'
 alias gs='git status'
 alias gss='git status -s'
 ## reverting
@@ -76,7 +76,7 @@ alias gstl="git stash list"
 alias gstp="git stash pop"
 alias gstd="git stash drop"
 alias gstclear="git stash clear"
-alias gstsh="git stash show"
+alias gstshw="git stash show"
 
 # branching
 # branches
