@@ -82,6 +82,7 @@ alias gstshw="git stash show"
 # branches
 alias gb='git branch'
 alias gba='git branch -a'
+alias gbr='git branch -r'
 alias gbt='git branch --track'
 alias gdel='git branch -D'
 #changing

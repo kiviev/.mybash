@@ -1,6 +1,7 @@
 ## Git flow variables
 ORIGIN='origin/'
 FEATURE='feature/'
+EPIC='epic/'
 BUGFIX='bugfix/'
 HOTFIX='hotfix/'
 PREFIX='BK-'
@@ -560,6 +561,9 @@ function git_merge(){
     FOLDER='master'
   elif [ "$1" == '-of' ]; then
     FOLDER="$FEATURE"
+    BRANCH="$THIS_PREFIX$2"
+  elif [ "$1" == '-oe' ]; then
+    FOLDER="$EPIC"
     BRANCH="$THIS_PREFIX$2"
   elif [ "$1" == '-f' ]; then
     THIS_ORIGIN=''
