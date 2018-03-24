@@ -16,6 +16,11 @@ function blgogo(){
 	bl && gogo $1 $2
 }
 
+function blgoe(){
+	bl4 && goe $1 $2
+	bl && goe $1 $2
+}
+
 function blflow_start(){
 	bl4 && flow_start $1 $2
 	bl && flow_start $1 $2
@@ -56,6 +61,8 @@ function blgit_del_local_lotes(){
 	bl4 && git_del_local_lotes $1 $2
 	bl && git_del_local_lotes $1 $2
 }
+
+
 
 function blgdall(){
 	bl4 && gdall

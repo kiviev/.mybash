@@ -1,6 +1,7 @@
 ## Git flow variables
 ORIGIN='origin/'
 FEATURE='feature/'
+EPIC='epic/'
 BUGFIX='bugfix/'
 HOTFIX='hotfix/'
 PREFIX='BK-'
@@ -439,7 +440,7 @@ function git_rename() {
     if [ "$2" != '' ]; then
       ARG=$2
     else 
-      echo "No ha puesto titulo al stash"
+      printText "WARN" "No ha puesto titulo al stash" 
       return
     fi
   elif [ "$1" == '-d' ]; then
@@ -447,7 +448,7 @@ function git_rename() {
       if [ "$2" != '' ]; then
       ARG=$2
     else 
-      echo "No ha seleccionado index del stash"
+      printText "WARN" "No ha seleccionado index del stash" 
       return
       fi
   elif [ "$1" == '-a' ]; then
@@ -455,7 +456,7 @@ function git_rename() {
       if [ "$2" != '' ]; then
       ARG=$2
     else 
-      echo "No ha seleccionado index del stash"
+      printText "WARN" "No ha seleccionado index del stash" 
       return
     fi
   elif [ "$1" == '-p' ]; then
@@ -463,7 +464,7 @@ function git_rename() {
     if [ "$2" != '' ]; then
       ARG=$2
     else 
-      echo "No ha seleccionado index del stash"
+      printText "WARN" "No ha seleccionado index del stash" 
       return
     fi
   elif [ "$1" == '-l' ]; then
@@ -473,7 +474,7 @@ function git_rename() {
   elif [ "$1" == '-clear' ]; then
       TYPE="clear"
   fi
-  echo "git stash $TYPE $ARG"
+  printText "OK" "git stash $TYPE $ARG" 
   git stash $TYPE $ARG
  }
 
@@ -561,6 +562,9 @@ function git_merge(){
   elif [ "$1" == '-of' ]; then
     FOLDER="$FEATURE"
     BRANCH="$THIS_PREFIX$2"
+  elif [ "$1" == '-oe' ]; then
+    FOLDER="$EPIC"
+    BRANCH="$THIS_PREFIX$2"
   elif [ "$1" == '-f' ]; then
     THIS_ORIGIN=''
     FOLDER="$FEATURE"
@@ -632,4 +636,17 @@ function patchToStash(){
   printText "LIGHT_PURPLE" "gstshw -p stash@{$STASHNUM} > $FILEPATH.patch"
   gstshw -p stash@{$STASHNUM} > $FILEPATH.patch
   printText "OK" "OK" 
+}
+
+function deleteStashes(){
+  if [[ $1 != '' && $2 != '' ]]; then 
+    MAX=$2
+    MIN=($1 - 1)
+    for ((i=$MAX; i>=$MIN; i--)); do
+      printText 'OK' 'git_stash -d '${i}
+      git_stash -d ${i}
+    done
+  else 
+    printText "ERROR" "Argumentos no validos"
+  fi
 }
