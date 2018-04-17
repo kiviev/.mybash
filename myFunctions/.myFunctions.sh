@@ -119,7 +119,13 @@ function is_array2(){
 }
 
 
-
+fucntion mkdirin(){
+	if [ $1 != '' ]; then
+		mkdir $1 && cd $1
+	else 
+		echo 'ERROR No hay directorio que crear'
+	fi
+}
 
 
 function xxx(){
