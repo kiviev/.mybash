@@ -119,7 +119,7 @@ function is_array2(){
 }
 
 
-fucntion mkdirin(){
+function mkdirin(){
 	if [ $1 != '' ]; then
 		mkdir $1 && cd $1
 	else 
