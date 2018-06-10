@@ -8,9 +8,13 @@ function mssh(){
 	USER=''
 	IP=''
 	ARGS=''
+
 	if [ $1 = 'pi' ]; then
 		USER='pi'
 		IP='192.168.1.140'
+	elif [ $1 = 'vbox' ]; then
+		USER='pack'
+		IP='192.168.1.145'
 	elif [ $1 = '-b' ]; then
 		USER='root'
 		IP='192.168.56.2'
@@ -21,6 +25,9 @@ function mssh(){
 	else
 		echo 'no has indicado argumento o no es valido'
 		return
+	fi
+	if [ $2 = '-r' ]; then
+		USER='root'
 	fi
 	echo "ssh $ARGS$USER@$IP"
 	ssh $ARGS$USER@$IP
@@ -159,3 +166,6 @@ function xxx(){
  # declare -p v | grep -q '^declare \-a' && return || echo no array
  
  
+function myip(){
+	curl "https://canihazip.com/s"
+}
