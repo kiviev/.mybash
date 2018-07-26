@@ -169,3 +169,7 @@ function xxx(){
 function myip(){
 	curl "https://canihazip.com/s"
 }
+
+function backup_pi(){
+	(pv -n /dev/sda | ssh pi@192.168.1.140 "sudo dd if=/dev/mmcblk0 bs=1M | gzip -" | dd of=/home/pack/Backups/pi/pibackup_cds_$(date +%Y%m%d).gz) 2>&1 | dialog --gauge "Running dd command (cloning), please wait..." 10 70 0
+}
