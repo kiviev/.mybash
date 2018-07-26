@@ -9,3 +9,5 @@ alias nodeparams="node ~/Escritorio/nodetest/params.js"
 alias and="&&" 
 
 alias mybash="cd ~/.mybash/"
+alias ker="docker "
+alias kercom="docker-compose "
