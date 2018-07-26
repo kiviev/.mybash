@@ -11,3 +11,5 @@ alias and="&&"
 alias mybash="cd ~/.mybash/"
 alias ker="docker "
 alias kercom="docker-compose "
+
+alias bd=". bd -si"

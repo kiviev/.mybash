@@ -4,7 +4,7 @@ FEATURE='feature/'
 EPIC='epic/'
 BUGFIX='bugfix/'
 HOTFIX='hotfix/'
-PREFIX='BK-'
+PREFIJO='BK-'
 PROD_BRANCH='prod'
 DEV_BRANCH='master'
 
@@ -318,13 +318,13 @@ function gof() {
   # example '$ gof XYZ'
 
   if [ "$2" == '-s' ]; then
-    gogo $FEATURE$PREFIX$1
+    gogo $FEATURE$PREFIJO$1
   elif [ "$2" == '-b' ]; then
-    go $BUGFIX/$PREFIX$1
+    go $BUGFIX/$PREFIJO$1
   elif [ "$2" == '-bs' |  "$2" == '-sb' ]; then
-    gogo $FEATUREbugfix/$PREFIX$1
+    gogo $FEATUREbugfix/$PREFIJO$1
   else
-    go $FEATURE$PREFIX$1
+    go $FEATURE$PREFIJO$1
   fi
 }
 
@@ -336,9 +336,9 @@ function goe() {
   # example '$ goe XYZ'
 
   if [ "$2" == '-s' ]; then
-    gogo epic/$PREFIX$1
+    gogo epic/$PREFIJO$1
   else
-    go epic/$PREFIX$1
+    go epic/$PREFIJO$1
   fi
 }
 
@@ -346,7 +346,7 @@ function create_epic() {
   # about 'Make a epic branch and publish it into origin'
   # group 'git'
   # param '1: epic JIRA ID'
-  # example '$ create_epic $PREFIXXYZ'
+  # example '$ create_epic $PREFIJOXYZ'
 
   gogo master
   go -b epic/$1
@@ -362,14 +362,14 @@ function git_rename() {
   # example '$ git rename 4056 4056-bck -f'
 
   if [ "$3" == '-e' ]; then
-    R_PREFIX="epic/$PREFIX"
+    R_PREFIJO="epic/$PREFIJO"
   elif [ "$3" == '-f' ]; then
-    PREFIX="$FEATURE$PREFIX"
+    PREFIJO="$FEATURE$PREFIJO"
   else
-    R_PREFIX=""
+    R_PREFIJO=""
   fi
-  OLD_BRANCH="$R_PREFIX$1"
-  NEW_BRANCH="$R_PREFIX$2"
+  OLD_BRANCH="$R_PREFIJO$1"
+  NEW_BRANCH="$R_PREFIJO$2"
   gogo $OLD_BRANCH
   git branch -m $OLD_BRANCH $NEW_BRANCH
   git push origin :$OLD_BRANCH $NEW_BRANCH
@@ -382,17 +382,17 @@ function git_rename() {
  {
   # about 'start a new branch accord git flow'
   # group 'git'
-  # param '1: Ticket number, without $PREFIX'
+  # param '1: Ticket number, without $PREFIJO'
   # param '2: Branch type:
   #           -f = feature (default)
   #           -h = hotfix
   #           -r = release
   #           -b = bugfix
-  #           -p = personalized (no add $PREFIX)'
+  #           -p = personalized (no add $PREFIJO)'
   constants
   FOLDER=''
   BASE=$DEV_BRANCH
-  THIS_PREFIX=$PREFIX
+  THIS_PREFIJO=$PREFIJO
   if [ "$2" = '-f' ]; then
     FOLDER='feature'
     BASE=$DEV_BRANCH
@@ -401,7 +401,7 @@ function git_rename() {
     BASE=$PROD_BRANCH
   elif [ "$2" = '-r' ]; then
     FOLDER='release'
-    THIS_PREFIX='v.'
+    THIS_PREFIJO='v.'
   elif [ "$2" = '-b' ]; then
     FOLDER='bugfix'
   elif [ "$2" = '-p' ]; then
@@ -410,8 +410,8 @@ function git_rename() {
     return 
   fi
   gogo $BASE
-  echo "git flow $FOLDER start $THIS_PREFIX$1"
-  git flow $FOLDER start $THIS_PREFIX$1
+  echo "git flow $FOLDER start $THIS_PREFIJO$1"
+  git flow $FOLDER start $THIS_PREFIJO$1
   # if [ "$2" == '-f']; then
   #   echo "vamos a gof $1"
   #   gof $1
@@ -482,17 +482,17 @@ function git_rename() {
 function git_del_origin(){
   # about 'delete a branch in origin repo'
   # group 'git'
-  # param '1: Ticket number, without $PREFIX'
+  # param '1: Ticket number, without $PREFIJO'
   # param '2: Branch type:
   #           -f = feature (default)
   #           -h = hotfix
   #           -r = release
   #           -b = bugfix
-  #           -p = personalized (no add $PREFIX)'
+  #           -p = personalized (no add $PREFIJO)'
   constants
   FOLDER=''
   BASE=$DEV_BRANCH
-  THIS_PREFIX=$PREFIX
+  THIS_PREFIJO=$PREFIJO
   if [[ -z $1 || -z $2 ]]; then
     echo "git delete origin sin argumentos"
     return
@@ -505,7 +505,7 @@ function git_del_origin(){
     BASE=$PROD_BRANCH
   elif [ "$1" == '-r' ]; then
     FOLDER='release'
-    THIS_PREFIX='v.'
+    THIS_PREFIJO='v.'
   elif [ "$1" == '-b' ]; then
     FOLDER='bugfix'
  elif [ "$1" == '-p' ]; then
@@ -513,15 +513,15 @@ function git_del_origin(){
     git push origin :$2
     return
   fi
-echo "git push origin :$FOLDER/$THIS_PREFIX$2"
-   git push origin :$FOLDER/$THIS_PREFIX$2
+echo "git push origin :$FOLDER/$THIS_PREFIJO$2"
+   git push origin :$FOLDER/$THIS_PREFIJO$2
 }
 
 function git_del_local(){
   constants
   FOLDER=''
   BASE=$DEV_BRANCH
-  THIS_PREFIX=$PREFIX
+  THIS_PREFIJO=$PREFIJO
   if [[ -z $1 || -z $2 ]]; then
     echo "git delete local sin argumentos"
     return
@@ -534,7 +534,7 @@ function git_del_local(){
     BASE=$PROD_BRANCH
   elif [ "$1" == '-r' ]; then
     FOLDER='release'
-    THIS_PREFIX='v.'
+    THIS_PREFIJO='v.'
   elif [ "$1" == '-b' ]; then
     FOLDER='bugfix'
   elif [ "$1" == '-p' ]; then
@@ -542,8 +542,8 @@ function git_del_local(){
     git push origin :$2
     return
   fi
-  echo "git branch -D $FOLDER/$THIS_PREFIX$2"
-  git branch -D $FOLDER/$THIS_PREFIX$2
+  echo "git branch -D $FOLDER/$THIS_PREFIJO$2"
+  git branch -D $FOLDER/$THIS_PREFIJO$2
 }
 
 function git_del_all(){
@@ -554,21 +554,21 @@ function git_del_all(){
 function git_merge(){
   THIS_ORIGIN=$ORIGIN
   FOLDER=''
-  THIS_PREFIX=$PREFIX
+  THIS_PREFIJO=$PREFIJO
   PUB=''
   BRANCH=''
   if [ "$1" == '-om' ]; then
     FOLDER='master'
   elif [ "$1" == '-of' ]; then
     FOLDER="$FEATURE"
-    BRANCH="$THIS_PREFIX$2"
+    BRANCH="$THIS_PREFIJO$2"
   elif [ "$1" == '-oe' ]; then
     FOLDER="$EPIC"
-    BRANCH="$THIS_PREFIX$2"
+    BRANCH="$THIS_PREFIJO$2"
   elif [ "$1" == '-f' ]; then
     THIS_ORIGIN=''
     FOLDER="$FEATURE"
-    BRANCH="$THIS_PREFIX$2"
+    BRANCH="$THIS_PREFIJO$2"
   else
     echo 'sin argumentos'
   fi
