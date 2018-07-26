@@ -6,6 +6,11 @@ function blgo(){
 	bl && go $1
 }
 
+function blgl(){
+	bl4 && gl
+	bl && gl
+}
+
 function blgof(){
 	bl4 && gof $1 $2
 	bl && gof $1 $2
@@ -19,6 +24,10 @@ function blgogo(){
 function blgoe(){
 	bl4 && goe $1 $2
 	bl && goe $1 $2
+}
+
+function blgoepull(){
+	blgoe $1 $2 && blgl
 }
 
 function blflow_start(){
