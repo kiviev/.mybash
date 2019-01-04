@@ -171,5 +171,11 @@ function myip(){
 }
 
 function backup_pi(){
-	(pv -n /dev/sda | ssh pi@192.168.1.140 "sudo dd if=/dev/mmcblk0 bs=1M | gzip -" | dd of=/home/pack/Backups/pi/pibackup_cds_$(date +%Y%m%d).gz) 2>&1 | dialog --gauge "Running dd command (cloning), please wait..." 10 70 0
+	DIROUTPUT='/home/pack/Backups/pi/'
+	if [ "$1" != '' ]; then
+		DIROUTPUT=$1
+	fi
+	OUTPUT=$DIROUTPUT"pibackup_cds_$(date +%Y%m%d).gz"
+	echo "(pv -n /dev/sda | ssh pi@192.168.1.140 \"sudo dd if=/dev/mmcblk0 bs=1M | gzip -\" | dd of=$OUTPUT) 2>&1 | dialog --gauge \"Running dd command (cloning), please wait...\" 10 70 0"
+	(pv -n /dev/sda | ssh pi@192.168.1.140 "sudo dd if=/dev/mmcblk0 bs=1M | gzip -" | dd of=$OUTPUT) 2>&1 | dialog --gauge "Running dd command (cloning), please wait..." 10 70 0
 }

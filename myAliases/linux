@@ -53,3 +53,8 @@ alias hosts="sudo nano /etc/hosts"
 ##### conexions ssh
 
 alias pi="ssh pi@192.168.1.140"
+
+
+##### comandos terminal
+
+alias lsl="ls -lah"
