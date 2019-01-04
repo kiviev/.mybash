@@ -1,0 +1,22 @@
+alias ker="docker"
+alias kercom="docker-compose"
+
+
+
+alias kerallids="ker ps -q"
+
+alias kerstopall="ker stop $(docker ps -q)"
+
+
+
+
+
+
+
+
+
+
+
+
+
+

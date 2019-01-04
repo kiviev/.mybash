@@ -15,3 +15,7 @@ alias apastatus="sudo service apache2 status"
 #### edit files
 
 alias apaconf="sudo nano /etc/apache2/apache2.conf"
+
+## services
+# network
+alias networkmon="sudo iftop -P"
