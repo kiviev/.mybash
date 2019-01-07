@@ -10,7 +10,7 @@ function mssh(){
 	ARGS=''
 
 	if [ $1 = 'pi' ]; then
-		USER='pi'
+		USER='ubuntu'
 		IP='192.168.1.140'
 	elif [ $1 = 'vbox' ]; then
 		USER='pack'
@@ -178,4 +178,22 @@ function backup_pi(){
 	OUTPUT=$DIROUTPUT"pibackup_cds_$(date +%Y%m%d).gz"
 	echo "(pv -n /dev/sda | ssh pi@192.168.1.140 \"sudo dd if=/dev/mmcblk0 bs=1M | gzip -\" | dd of=$OUTPUT) 2>&1 | dialog --gauge \"Running dd command (cloning), please wait...\" 10 70 0"
 	(pv -n /dev/sda | ssh pi@192.168.1.140 "sudo dd if=/dev/mmcblk0 bs=1M | gzip -" | dd of=$OUTPUT) 2>&1 | dialog --gauge "Running dd command (cloning), please wait..." 10 70 0
+}
+
+function restore_pi(){
+	sudo umount /dev/mmcblk0p1 && umount /dev/mmcblk0p2
+	DIRINIT=$(pwd)
+	bkpdirpi
+	if [ "$1" != '' ]; then
+		FILEINPUT=$1
+	else 
+		echo "Tienes que poner la dirección del fichero desde el directorio de backups (*.img)"
+		return
+	fi
+	echo "gzip -dc "$FILEINPUT" | sudo dd of=/dev/mmcblk0 bs=1M status=progress; sync"
+	echo "DIRINIT: $DIRINIT"
+
+	gzip -dc $FILEINPUT | sudo dd of=/dev/mmcblk0 bs=1M status=progress; sync
+	
+	cd $DIRINIT
 }

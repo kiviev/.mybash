@@ -1,7 +1,12 @@
 
-#### alias
+#### alias ####
 
-        ##### apache
+	#### directories
+alias bkpdir="cd ~/Backups/"
+alias bkpdirpi="cd ~/Backups/pi"
+
+
+	##### apache
 alias www="cd /var/www/html/"
 alias apa="cd /etc/apache2/"
 alias apaen="cd /etc/apache2/sites-enabled/"
@@ -12,10 +17,10 @@ alias apasto="sudo service apache2 stop"
 alias apasrsta="sudo service apache2 restart"
 alias apastatus="sudo service apache2 status"
 
-#### edit files
+	#### edit files
 
 alias apaconf="sudo nano /etc/apache2/apache2.conf"
 
-## services
-# network
+	#### services
+	# network
 alias networkmon="sudo iftop -P"
