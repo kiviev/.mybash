@@ -10,7 +10,7 @@ function mssh(){
 	ARGS=''
 
 	if [ $1 = 'pi' ]; then
-		USER='ubuntu'
+		USER='pack'
 		IP='192.168.1.140'
 	elif [ $1 = 'vbox' ]; then
 		USER='pack'
@@ -106,6 +106,12 @@ function printText(){
 # 	return $ISARRAY
 # }
 
+genpasswd() {
+	local l=$1
+       	[ "$l" == "" ] && l=20
+      	tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
+}
+
 function is_array()
 {   
 	declare -a ARRAY=("${!1}")
@@ -183,7 +189,7 @@ function backup_pi(){
 function restore_pi(){
 	sudo umount /dev/mmcblk0p1 && umount /dev/mmcblk0p2
 	DIRINIT=$(pwd)
-	bkpdirpi
+	# bkpdirpi
 	if [ "$1" != '' ]; then
 		FILEINPUT=$1
 	else 
@@ -196,4 +202,18 @@ function restore_pi(){
 	gzip -dc $FILEINPUT | sudo dd of=/dev/mmcblk0 bs=1M status=progress; sync
 	
 	cd $DIRINIT
+}
+
+function install_image_pi(){
+	# sudo umount /dev/mmcblk0p1 && umount /dev/mmcblk0p2
+	DIRINIT=$(pwd)
+
+	if [ "$1" != '' ]; then
+		FILEINPUT=$1
+	else 
+		echo "Tienes que poner la dirección del fichero (*.img)"
+		return
+	fi
+echo $DIRINIT/$FILEINPUT
+	sudo dd if=$DIRINIT/$FILEINPUT of=/dev/mmcblk0 bs=4096 conv=notrunc status=progress
 }
