@@ -650,3 +650,31 @@ function deleteStashes(){
     printText "ERROR" "Argumentos no validos"
   fi
 }
+
+
+function cherry_pick_merge(){
+  # sample ->git cherry-pick -m 1 ba7afbc38e4c56
+  # $1 number of parent
+  # $2 hash of commit merge
+  if [[ -z $1 || -z $2 ]]; then
+    echo "Sin argumentos válidos"
+    return
+  fi
+
+  printText "LIGHT_PURPLE" "git cherry-pick -m $1  $2"
+  git cherry-pick -m $1  $2
+}
+
+
+function revert_merge(){
+  # sample ->git revert 8569ad2a4a -m 1
+  # $1 number of parent
+  # $2 hash of commit merge
+  if [[ -z $1 || -z $2 ]]; then
+    echo "Sin argumentos válidos"
+    return
+  fi
+
+  printText "LIGHT_PURPLE" "git revert  $2 -m $1"
+  git revert  $2 -m $1
+}

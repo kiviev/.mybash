@@ -71,8 +71,6 @@ function blgit_del_local_lotes(){
 	bl && git_del_local_lotes $1 $2
 }
 
-
-
 function blgdall(){
 	bl4 && gdall
 	bl && gdall 
@@ -81,5 +79,9 @@ function blgdall(){
 function blclean_wc(){
 	gdall &&  g clean -dfx -e blink/conf/ -e blink/www/wrk/ -e blink/www/node_modules/
 	# gpristine -e blink/conf/ -e blink/www/wrk/ -e blink/www/node_modules/
+}
 
+function blgs(){
+	bl4 && gs
+	bl && gs
 }
