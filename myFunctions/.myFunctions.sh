@@ -8,10 +8,18 @@ function mssh(){
 	USER=''
 	IP=''
 	ARGS=''
+	PORT=22
 
 	if [ $1 = 'pi' ]; then
-		USER='pack'
+		USER='packpi'
 		IP='192.168.1.140'
+	elif [ $1 = 'pi2' ]; then
+		USER='pi'
+		IP='192.168.1.140'
+	elif [ $1 = 'vps' ]; then
+		USER='packvps'
+		IP='51.77.149.192'
+		ARGS=' -p 5003 '
 	elif [ $1 = 'vbox' ]; then
 		USER='pack'
 		IP='192.168.1.145'
@@ -173,7 +181,7 @@ function xxx(){
  
  
 function myip(){
-	curl "https://canihazip.com/s"
+	curl "https://canihazip.com/s" && echo ""
 }
 
 function backup_pi(){
@@ -182,8 +190,9 @@ function backup_pi(){
 		DIROUTPUT=$1
 	fi
 	OUTPUT=$DIROUTPUT"pibackup_cds_$(date +%Y%m%d).gz"
-	echo "(pv -n /dev/sda | ssh pi@192.168.1.140 \"sudo dd if=/dev/mmcblk0 bs=1M | gzip -\" | dd of=$OUTPUT) 2>&1 | dialog --gauge \"Running dd command (cloning), please wait...\" 10 70 0"
-	(pv -n /dev/sda | ssh pi@192.168.1.140 "sudo dd if=/dev/mmcblk0 bs=1M | gzip -" | dd of=$OUTPUT) 2>&1 | dialog --gauge "Running dd command (cloning), please wait..." 10 70 0
+	echo "(pv -n /dev/sda | ssh $(id -un)@192.168.1.140 \"sudo dd if=/dev/mmcblk0 bs=1M | gzip -\" | dd of=$OUTPUT) 2>&1 | dialog --gauge \"Running dd command (cloning), please wait...\" 10 70 0"
+	(pv -n /dev/sda | ssh $(id -un)@192.168.1.140 "sudo dd if=/dev/mmcblk0 bs=1M | gzip -" | dd of=$OUTPUT) 2>&1 | dialog --gauge "Running dd command (cloning), please wait..." 10 70 0 
+	 cvlc http://soundbible.com/mp3/Woop%20Woop-SoundBible.com-198943467.mp3
 }
 
 function restore_pi(){
