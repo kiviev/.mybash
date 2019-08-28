@@ -640,7 +640,7 @@ function patchToStash(){
 
 function deleteStashes(){
   if [[ $1 != '' && $2 != '' ]]; then 
-    MAX=$2
+    MAX=$2q
     MIN=($1 - 1)
     for ((i=$MAX; i>=$MIN; i--)); do
       printText 'OK' 'git_stash -d '${i}
@@ -653,7 +653,7 @@ function deleteStashes(){
 
 
 function cherry_pick_merge(){
-  # sample ->git cherry-pick -m 1 ba7afbc38e4c56
+  # sample cherry_pick_merge 1 ba7afbc38e4c56 ->git cherry-pick -m 1 ba7afbc38e4c56
   # $1 number of parent
   # $2 hash of commit merge
   if [[ -z $1 || -z $2 ]]; then
