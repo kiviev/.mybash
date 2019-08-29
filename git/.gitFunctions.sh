@@ -321,7 +321,7 @@ function gof() {
     gogo $FEATURE$PREFIJO$1
   elif [ "$2" == '-b' ]; then
     go $BUGFIX/$PREFIJO$1
-  elif [ "$2" == '-bs' |  "$2" == '-sb' ]; then
+  elif [ "$2" == '-bs' ] || [ "$2" == '-sb' ]; then
     gogo $FEATUREbugfix/$PREFIJO$1
   else
     go $FEATURE$PREFIJO$1
