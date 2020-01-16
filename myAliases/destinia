@@ -1,0 +1,52 @@
+
+alias pull_or_master='git pull origin master'
+alias gfetch='git fetch'
+
+######## DNS ########
+
+alias cdnsgr="sudo bash ~/.bin/CambioDNSLinux\(MenuGrafico\).sh -h"
+alias cdns="sudo ~/ChangeDNS.sh"
+alias cdnsg="sudo ~/ChangeDNS.sh google"
+alias cdnso="sudo ~/ChangeDNS.sh oficina"
+alias cdnsv="sudo ~/ChangeDNS.sh vs101"
+
+######## GLOBAL ########
+
+GLOBAL=$HOME/PhpstormProjects/global
+alias goglobal='cd $GLOBAL'
+alias gogoglobal='goglobal && gfetch&& pull_or_master'
+
+######## Acomotel ########
+
+ACOMOTEL="$HOME/PhpstormProjects/global/vendor/acomotel"
+
+alias goac='cd $ACOMOTEL'
+alias goacapi="cd $ACOMOTEL/api"
+alias goaccommon="cd $ACOMOTEL/common"
+alias goacpushing="cd $ACOMOTEL/pushing"
+alias goacweb="cd $ACOMOTEL/web"
+alias goacwebvue="cd $ACOMOTEL/web/resources/app"
+
+
+
+alias gogoacapi='goacapi && gfetch && pull_or_master'
+alias gogoaccommon='goaccommon && gfetch && pull_or_master'
+alias gogoacpushing='goacpushing && gfetch && pull_or_master'
+alias gogoacweb='goacweb && gfetch && pull_or_master'
+
+alias gogoacfull='gogoacapi && gogoaccommon && gogoacpushing && gogoacweb && goac' 
+
+alias gogofull='gogoglobal && gogoacfull'
+
+
+
+### NPM ###
+
+alias acserve='goacwebvue && npm run serve'
+
+########## VUE ##########
+
+alias vuest='goacwebvue && npm run serve'
+alias vuebuild='goacwebvue && npm run build'
+alias vuebuilddev='vuebuild -- --development'
+alias vuebuildprod='vuebuild -- --production'
