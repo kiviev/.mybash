@@ -1,5 +1,6 @@
 
 source $CONF_DIR/myFunctions/blink.sh
+source $CONF_DIR/myFunctions/destinia.sh
 source $CONF_DIR/myFunctions/mydefinitions.sh
 
 # my functions

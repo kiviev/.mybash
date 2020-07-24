@@ -14,7 +14,7 @@ alias cdnsv="sudo ~/ChangeDNS.sh vs101"
 
 GLOBAL=$HOME/PhpstormProjects/global
 alias goglobal='cd $GLOBAL'
-alias gogoglobal='goglobal && gfetch&& pull_or_master'
+alias gogoglobal='goglobal && gfetch && pull_or_master'
 
 ######## Acomotel ########
 
@@ -50,3 +50,9 @@ alias vuest='goacwebvue && npm run serve'
 alias vuebuild='goacwebvue && npm run build'
 alias vuebuilddev='vuebuild -- --development'
 alias vuebuildprod='vuebuild -- --production'
+
+
+
+
+############ SSH ############
+alias tologs=' -t "cd /usr/local/global_local/logs/; bash"'
