@@ -182,7 +182,7 @@ function xxx(){
  
  
 function myip(){
-	curl "https://canihazip.com/s" && echo ""
+	curl "https://icanhazip.com" && echo ""
 }
 
 function backup_pi(){
