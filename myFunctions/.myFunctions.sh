@@ -64,9 +64,9 @@ function printText(){
 	# $2 text to color
 	TEXT=''
 	COLOR=''
-	if [ "$2" != '' ]; then
-		TEXT=$2
-	fi
+		if [ "$2" != '' ]; then
+			TEXT=$2
+		fi
 	if [ "$1" != '' ]; then
 
 		if [ "$1" == 'ERROR' ]; then
