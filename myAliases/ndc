@@ -1,0 +1,5 @@
+alias desa='ssh desa2'
+alias desaweb='desa -t "cd /var/www/desa2/src; bash"'
+alias desacron='desa -t "cd /var/www/desa2/frm/_cron; bash"'
+alias preweb='desa -t "cd /var/www/ndcpre/src; bash"'
+alias desalog='desa -t "cd /var/www/desa2/frm/_cron/tmp/logs; bash"'
