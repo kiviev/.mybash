@@ -10,3 +10,5 @@ alias mybash="cd ~/.mybash/"
 
 
 alias bd=". bd -si"
+
+alias ..='cd ..'
