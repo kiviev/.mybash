@@ -11,7 +11,6 @@ SSH_ENV=$HOME/.ssh/environment
 
 # Aliases
 source $CONF_DIR/git/.gitAliases
-source $CONF_DIR/git/nodegitAliases.sh
 # Git complex functions
 source $CONF_DIR/git/.gitFunctions.sh
 
@@ -20,30 +19,28 @@ source $CONF_DIR/git/.gitFunctions.sh
 source $CONF_DIR/myAliases/.myaliases
 # Mis funciones 
 source $CONF_DIR/myFunctions/.myFunctions.sh
-# Ionic 
-source $CONF_DIR/ionic/.ionic.sh
 
 
 
 
-# start the ssh-agent
-function start_agent {
-    echo "Initializing new SSH agent..."
-    # spawn ssh-agent
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-    echo succeeded
-    chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add
-    ssh-add ~/.ssh/id_rsa
-    ssh-add ~/.ssh/ubuntulenovo4
-}
+# # start the ssh-agent
+# function start_agent {
+#     echo "Initializing new SSH agent..."
+#     # spawn ssh-agent
+#     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+#     echo succeeded
+#     chmod 600 "${SSH_ENV}"
+#     . "${SSH_ENV}" > /dev/null
+#     /usr/bin/ssh-add
+#     ssh-add ~/.ssh/id_rsa
+#     ssh-add ~/.ssh/ubuntulenovo4
+# }
  
-if [ -f "${SSH_ENV}" ]; then
-        . "${SSH_ENV}" > /dev/null
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-    start_agent;
-    }
-else
-    start_agent;
-fi
+# if [ -f "${SSH_ENV}" ]; then
+#         . "${SSH_ENV}" > /dev/null
+#     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+#     start_agent;
+#     }
+# else
+#     start_agent;
+# fi

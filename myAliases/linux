@@ -1,17 +1,8 @@
-
-
-	#### directorios
+#### directorios
 projects="$HOME/projects"
-cursos="$projects/cursos"
-apps="$projects/apps"
-ionicapps="$apps/ionic"
-angular="$cursos/angular2"
-restaurantes="$angular/appRestaurantes"
-	### apache
-alias htdocs="cd /opt/lampp/htdocs"
 
 
-	#### alias
+#### alias
 
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
@@ -23,9 +14,8 @@ alias cursos="cd $cursos"
 alias angular="cd $angular"
 alias restaurantes="cd $restaurantes"
 alias we="cd $projects/trabajos/weconoceteatimismo.com"
-alias mantenimiento="cd $ionicapps/mantenimiento"
 alias mantserve="mantenimiento && is"
-alias laravel="cd $projects/laravel"
+# alias laravel="cd $projects/laravel"
 
 ### Homestead
 alias hmst="cd ~/Homestead/"
@@ -36,13 +26,6 @@ alias hmstprov="cd ~/Homestead/ && vagrant provision"
 
 ### alias ejecucion programas
 			
- 	### LAMP
-alias lamp="sudo /opt/lampp/lampp"
-alias lmpstart="sudo /opt/lampp/lampp start"
-alias lmprestart="sudo /opt/lampp/lampp restart"
-alias lmpstop="sudo /opt/lampp/lampp stop"
-
-
 
 
 ##### edicion archivos
@@ -52,9 +35,25 @@ alias hosts="sudo nano /etc/hosts"
 
 ##### conexions ssh
 
-alias pi="ssh pi@192.168.1.140"
 
 
 ##### comandos terminal
 
 alias lsl="ls -lah"
+
+
+##### Tailwind
+
+alias ts='sudo tailscale'
+alias tsup='ts up'
+alias tsdown='sudo tailscale down'
+alias tslist='ts exit-node list'
+alias tsvps='tsup --exit-node=vps --accept-routes && tslist'
+alias tshome='tsup --exit-node=home --accept-routes && tslist'
+alias tsstatus='sudo tailscale status'
+
+##### Calibre
+
+alias calibre='killall gvfsd-mtp; calibre'
+
+

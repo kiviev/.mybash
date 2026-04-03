@@ -1,6 +1,3 @@
-
-source $CONF_DIR/myFunctions/blink.sh
-source $CONF_DIR/myFunctions/destinia.sh
 source $CONF_DIR/myFunctions/mydefinitions.sh
 
 # my functions
@@ -14,9 +11,10 @@ function mssh(){
 	if [ $1 = 'pi' ]; then
 		USER='packpi'
 		IP='192.168.1.140'
-	elif [ $1 = 'pi2' ]; then
-		USER='pi'
-		IP='192.168.1.140'
+	elif [ $1 = 'piex' ]; then
+		USER='packpi'
+		IP='kiviev.freemyip.com'
+		PORT=22
 	elif [ $1 = 'vps' ]; then
 		USER='packvps'
 		IP='51.77.149.192'
@@ -226,4 +224,11 @@ function install_image_pi(){
 	fi
 echo $DIRINIT/$FILEINPUT
 	sudo dd if=$DIRINIT/$FILEINPUT of=/dev/mmcblk0 bs=4096 conv=notrunc status=progress
+}
+
+
+
+function s(){
+
+	servor $1 index.html $2 --reload --browse
 }
