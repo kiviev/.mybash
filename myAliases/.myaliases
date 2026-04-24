@@ -2,7 +2,6 @@
 source $CONF_DIR/myAliases/windows
 source $CONF_DIR/myAliases/linux
 
-
 alias nodeparams="node ~/Escritorio/nodetest/params.js"
 alias and="&&" 
 
@@ -10,5 +9,3 @@ alias mybash="cd ~/.mybash/"
 
 
 alias bd=". bd -si"
-
-alias ..='cd ..'
