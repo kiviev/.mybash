@@ -11,21 +11,11 @@ alias instalar='sudo apt-get install'
 
 alias proj="cd $projects"
 alias cursos="cd $cursos"
-alias angular="cd $angular"
-alias restaurantes="cd $restaurantes"
-alias we="cd $projects/trabajos/weconoceteatimismo.com"
-alias mantserve="mantenimiento && is"
-# alias laravel="cd $projects/laravel"
 
-### Homestead
-alias hmst="cd ~/Homestead/"
-alias hmstup="cd ~/Homestead/ && vagrant up"
-alias hmsthalt="cd ~/Homestead/ && vagrant halt"
-alias hmstssh="cd ~/Homestead/ && vagrant ssh"
-alias hmstprov="cd ~/Homestead/ && vagrant provision"
 
 ### alias ejecucion programas
-			
+alias cc="claude"
+alias ccr="cc --resume"	
 
 
 ##### edicion archivos
@@ -49,7 +39,7 @@ alias tsup='ts up'
 alias tsdown='sudo tailscale down'
 alias tslist='ts exit-node list'
 alias tsvps='tsup --exit-node=vps --accept-routes && tslist'
-alias tshome='tsup --exit-node=home --accept-routes && tslist'
+alias tshome='tsup --exit-node=packhome --accept-routes && tslist'
 alias tsstatus='sudo tailscale status'
 
 ##### Calibre
